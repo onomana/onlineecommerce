@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="datetime.js"></script>
+    <script src="date.js"></script>
+</head>
+<body>
+    <!-- Header with menu and shopping cart -->
+    <header>
+        <div class="menu">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">COURSES</a></li>
+                <li><a href="#">AFFILIATIONS</a></li>
+                <li><a href="#">HOW TO JOIN</a></li>
+                <li><a href="#">TESTIMONIALS</a></li>
+            </ul>
+        </div>
+        <div class="cart">
+            <img src="cart-icon.png" alt="Cart Icon">
+        </div>
+    </header>
+
+    <!-- Welcome message -->
+    <div class="welcome-message">
+	        <div class="date">
+    
+                <?php
+				date_default_timezone_set('Asia/Colombo');
+                echo date("l, jS F, Y   H:i:s");
+                ?>
+            </div>
+        <h2>Welcome <?php echo htmlspecialchars($_GET["name"]); ?> (<?php echo htmlspecialchars($_GET["email"]); ?>)</h2>
+    </div>
+
+    <!-- Courses grid -->
+    <div class="courses-grid">
+        <!-- Example course, repeat for each course -->
+        <div class="course">
+            <h3>EC0001</h3>
+            <p>Quantitative Analysis in Business (45 H)</p>
+            <p>Rs. 35,000/-</p>
+        </div>
+        <div class="course">
+            <h3>EC0002</h3>
+            <p>Information Technology in Retailing (45 H)</p>
+            <p>Rs. 35,000/-</p>
+        </div>
+        <div class="course">
+            <h3>EC0003</h3>
+            <p>Brand Innovation & Development (30 H)</p>
+            <p>Rs. 25,000/-</p>
+        </div>
+        <div class="course">
+            <h3>EC0004</h3>
+            <p>Packaging & Logistic Management (30 H)</p>
+            <p>Rs. 25,000/-</p>
+        </div>
+        <div class="course">
+            <h3>EC0005</h3>
+            <p>Service Marketing (40 H)</p>
+            <p>Rs. 30,000/-</p>
+        </div>
+        <div class="course">
+            <h3>EC0006</h3>
+            <p>E-Commerce (45 H)</p>
+            <p>Rs. 35,000/-</p>
+        </div>
+    </div>
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('date').textContent = now.toLocaleString();
+		}
+		
+		function updateTime() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+        // Run the updateTime function every second
+        setInterval(updateTime, 1000);
+        // Initialize the time when the page loads
+        window.onload = updateTime;
+        
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+		
+    </script>
+    
+
+    
+</body>
+</html>
